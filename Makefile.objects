@@ -1,0 +1,8 @@
+xlencrypt.lo: /usr/local/src/php-7.2.7/ext/xlencrypt/xlencrypt.c
+	$(LIBTOOL) --mode=compile $(CC) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -I. -I/usr/local/src/php-7.2.7/ext/xlencrypt $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /usr/local/src/php-7.2.7/ext/xlencrypt/xlencrypt.c -o xlencrypt.lo 
+$(phplibdir)/xlencrypt.la: ./xlencrypt.la
+	$(LIBTOOL) --mode=install cp ./xlencrypt.la $(phplibdir)
+
+./xlencrypt.la: $(shared_objects_xlencrypt) $(XLENCRYPT_SHARED_DEPENDENCIES)
+	$(LIBTOOL) --mode=link $(CC) $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) $(LDFLAGS) -o $@ -export-dynamic -avoid-version -prefer-pic -module -rpath $(phplibdir) $(EXTRA_LDFLAGS) $(shared_objects_xlencrypt) $(XLENCRYPT_SHARED_LIBADD)
+

@@ -1,0 +1,13 @@
+// $Id$
+// vim:ft=javascript
+
+// If your extension references something external, use ARG_WITH
+// ARG_WITH("xlencrypt", "for xlencrypt support", "no");
+
+// Otherwise, use ARG_ENABLE
+// ARG_ENABLE("xlencrypt", "enable xlencrypt support", "no");
+
+if (PHP_XLENCRYPT != "no") {
+	EXTENSION("xlencrypt", "xlencrypt.c", PHP_EXTNAME_SHARED, "/DZEND_ENABLE_STATIC_TSRMLS_CACHE=1");
+}
+
